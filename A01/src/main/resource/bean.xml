@@ -3,10 +3,28 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://www.springframework.org/schema/beans 
          http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+         
+    <!-- 手动set设值 -->
     <bean id="person1" class="pojo.Person" />
+    <!-- 填写默认值 -->
 	<bean id="person2" class="pojo.Person">
 		<property name="id" value="12" />
 		<property name="age" value="10" />
 		<property name="name" value="panda" />
 	</bean>
+	
+	<!-- set注入 -->
+	<bean id="animalService" class="service.AnimalServiceImpl">
+		<property name="animalDao" ref="animalDao"></property>
+	</bean>
+	<bean id="animalDao" class="dao.AnimalDaoImpl"></bean>
+	<!-- 构造器注入 -->
+	<!-- 
+	<bean id="animalService" class="service.AnimalServiceImpl">
+		<constructor-arg name="animalDao" ref="animalDao" />
+	</bean>
+	<bean id="animalDao" class="dao.AnimalDaoImpl"></bean>
+	 -->
+	 
+	 
 </beans>
