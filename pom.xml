@@ -13,7 +13,8 @@
     <module>com.mypanda.first</module>
     <module>A01</module>
     <module>A02</module>
-	</modules>
+    <module>A03</module>
+  </modules>
 
 	<!-- 集中定义依赖版本号 -->
 	<properties>
