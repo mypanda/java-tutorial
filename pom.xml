@@ -14,7 +14,9 @@
     <module>A01</module>
     <module>A02</module>
     <module>A03</module>
-  </modules>
+    <module>template</module>
+    <module>generatorSqlmapCustom</module>
+	</modules>
 
 	<!-- 集中定义依赖版本号 -->
 	<properties>
