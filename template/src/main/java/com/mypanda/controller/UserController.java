@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mypanda.common.pojo.UsersDataResult;
 import com.mypanda.pojo.TpUser;
 import com.mypanda.service.UserService;
 
@@ -20,5 +21,12 @@ public class UserController {
 	public TpUser getUserById(@PathVariable int userid) {
 		TpUser tpUser = userService.getUserById(userid);
 		return tpUser;
+	}
+	
+	@RequestMapping("/users")
+	@ResponseBody
+	public UsersDataResult getUsersList(Integer page,Integer rows) {
+		UsersDataResult result = userService.getUsersList(page, rows);
+		return result;
 	}
 }

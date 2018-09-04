@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.mypanda.common.pojo.UsersDataResult;
 import com.mypanda.mapper.TpUserMapper;
 import com.mypanda.pojo.TpUser;
 import com.mypanda.pojo.TpUserExample;
@@ -31,5 +34,20 @@ public class UserServiceImpl implements UserService {
 		}
 		return null;
 	}
-
+	@Override
+	public UsersDataResult getUsersList(int page, int rows) {
+		//查询商品列表
+		TpUserExample example = new TpUserExample();
+		//分页处理
+		PageHelper.startPage(page, rows);
+		List<TpUser> list = userMapper.selectByExample(example);
+		//创建一个返回值对象
+		UsersDataResult result = new UsersDataResult();
+		result.setRows(list);
+		//取记录总条数
+		PageInfo<TpUser> pageInfo = new PageInfo<>(list);
+		System.out.println(pageInfo.getTotal());
+		result.setTotal(pageInfo.getTotal());
+		return result;
+	}
 }
